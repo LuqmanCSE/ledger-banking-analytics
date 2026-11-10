@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ledger is a deployed, synthetic banking analytics platform built with Cloudflare Workers, D1, SQL, Python, Apache ECharts and Power BI PBIP.">
+  <title>Ledger | Banking analytics case study</title>
+  <style>
+    :root { --ink:#11151a; --muted:#5f6872; --line:#dfe4e8; --paper:#f6f7f8; --blue:#0a6fae; --blue-dark:#06446f; --gold:#b08a40; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height:1.55; }
+    a { color:var(--blue-dark); }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px max(24px, calc((100% - 1180px)/2)); background:#0a0f14; color:#fff; }
+    .brand { font-family:Georgia, serif; font-size:27px; letter-spacing:-.04em; }
+    .brand small { margin-left:12px; color:#aeb8c2; font:700 10px/1 Inter, sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+    .nav-links { display:flex; gap:20px; font-size:13px; }
+    .nav-links a { color:#dce5ed; text-decoration:none; }
+    .hero { padding:88px max(24px, calc((100% - 1180px)/2)) 72px; background:#0a0f14; color:#fff; position:relative; overflow:hidden; }
+    .hero:after { content:""; position:absolute; width:430px; height:430px; right:8%; top:18px; border:1px solid rgba(105,190,235,.42); border-radius:50%; transform:rotate(-22deg); box-shadow:0 0 0 34px rgba(105,190,235,.06), 0 0 0 72px rgba(105,190,235,.04); }
+    .hero-inner { max-width:1180px; position:relative; z-index:1; }
+    .eyebrow { color:#8cc9eb; font-size:12px; font-weight:800; letter-spacing:.15em; text-transform:uppercase; }
+    h1 { max-width:720px; margin:16px 0 18px; font:400 clamp(44px,7vw,78px)/.98 Georgia, serif; letter-spacing:-.055em; }
+    .lede { max-width:640px; color:#d7e0e7; font-size:18px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+    .button { display:inline-flex; align-items:center; padding:12px 18px; border:1px solid #fff; color:#fff; text-decoration:none; font-size:13px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; }
+    .button.primary { background:#fff; color:#0a0f14; }
+    main { max-width:1180px; margin:0 auto; padding:36px 24px 80px; }
+    .notice { margin:0 0 34px; padding:14px 18px; border-left:3px solid var(--gold); background:#fff; color:var(--muted); font-size:14px; }
+    .metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin:0 0 42px; background:var(--line); border:1px solid var(--line); }
+    .metric { min-height:126px; padding:20px; background:#fff; }
+    .metric strong { display:block; margin:7px 0; font:400 31px/1 Georgia, serif; }
+    .metric span { color:var(--muted); font-size:12px; }
+    .section-heading { display:flex; align-items:end; justify-content:space-between; gap:24px; margin:48px 0 18px; border-bottom:1px solid var(--line); }
+    h2 { margin:0 0 10px; font:400 36px/1.08 Georgia, serif; letter-spacing:-.035em; }
+    h3 { margin:0 0 6px; font:700 17px/1.2 Georgia, serif; }
+    .section-heading p { max-width:460px; margin:0 0 12px; color:var(--muted); font-size:14px; }
+    .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .card { padding:24px; background:#fff; border:1px solid var(--line); }
+    .card p { color:var(--muted); margin:7px 0 0; }
+    .stack { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+    .tag { padding:6px 9px; background:#eef5f9; color:var(--blue-dark); font-size:12px; font-weight:700; }
+    .shot { width:100%; display:block; border:1px solid var(--line); background:#fff; }
+    .shot-caption { margin:8px 0 0; color:var(--muted); font-size:12px; }
+    .roadmap { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .roadmap .card { border-top:3px solid var(--blue); }
+    .roadmap small { color:var(--blue); font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    footer { max-width:1180px; margin:0 auto; padding:24px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+    @media (max-width:780px) { .nav { align-items:flex-start; flex-direction:column; } .nav-links { flex-wrap:wrap; } .hero { padding-top:58px; } .hero:after { right:-150px; top:100px; } .metrics, .grid, .roadmap { grid-template-columns:1fr; } .section-heading { display:block; } }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">Ledger <small>Banking analytics</small></div>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#overview">Overview</a><a href="#architecture">Architecture</a><a href="#evidence">Evidence</a><a href="#roadmap">Roadmap</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="overview">
+    <div class="hero-inner">
+      <div class="eyebrow">Portfolio case study · synthetic data</div>
+      <h1>A reporting foundation for better client conversations.</h1>
+      <p class="lede">Ledger turns a validated banking ledger into an auditable dashboard for balances, cash movement, engagement and data quality. It is deployed as a full-stack Cloudflare Worker and deliberately uses fictional data.</p>
+      <div class="actions">
+        <a class="button primary" href="https://ledger-banking-analytics.ledger-banking-analytics.workers.dev/">Open live demo</a>
+        <a class="button" href="https://github.com/LuqmanCSE/ledger-banking-analytics">View source</a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <p class="notice"><strong>Scope note:</strong> this is a portfolio demonstration, not a live bank connection or advisory system. Public writes are disabled; CSV uploads are validated as previews only.</p>
+
+    <section class="metrics" aria-label="Project metrics">
+      <div class="metric"><span>Fictional clients</span><strong>480</strong><span>across 18 branches</span></div>
+      <div class="metric"><span>Signed transactions</span><strong>9,993</strong><span>Aug 2024 – Jul 2025</span></div>
+      <div class="metric"><span>Automated tests</span><strong>16</strong><span>reporting, ingestion and HTTP</span></div>
+      <div class="metric"><span>Power BI artifact</span><strong>PBIP</strong><span>downloadable project ZIP</span></div>
+    </section>
+
+    <section id="architecture">
+      <div class="section-heading"><h2>Architecture</h2><p>One reporting definition feeds the dashboard, CSV exports and Power BI baseline.</p></div>
+      <div class="grid">
+        <article class="card"><h3>Browser and charts</h3><p>Semantic HTML, CSS and JavaScript with Apache ECharts. Filters are sent to the same API used by exports.</p><div class="stack"><span class="tag">JavaScript</span><span class="tag">Apache ECharts</span><span class="tag">Accessible UI</span></div></article>
+        <article class="card"><h3>Worker and database</h3><p>Cloudflare Worker routes requests and runs validation/reporting logic against D1 in production or SQLite locally.</p><div class="stack"><span class="tag">Cloudflare Workers</span><span class="tag">D1 / SQLite</span><span class="tag">SQL</span></div></article>
+        <article class="card"><h3>Data-quality controls</h3><p>Known-client checks, signed amounts, valid dates, unique transaction IDs, idempotent retries and rollback-safe commits.</p><div class="stack"><span class="tag">CSV ingestion</span><span class="tag">Audit runs</span><span class="tag">Formula-safe exports</span></div></article>
+        <article class="card"><h3>Analyst handoff</h3><p>Filtered CSVs, a Power Query recipe and a PBIP project let a reviewer continue exploration in Power BI Desktop.</p><div class="stack"><span class="tag">Power BI PBIP</span><span class="tag">Power Query</span><span class="tag">INR</span></div></article>
+      </div>
+    </section>
+
+    <section id="evidence">
+      <div class="section-heading"><h2>Evidence, not just claims</h2><p>The public repository includes reproducible setup, test output and screenshots from the deployed baseline.</p></div>
+      <div class="grid">
+        <figure class="card"><img class="shot" src="dashboard-overview.png" alt="Ledger banking overview dashboard"><figcaption class="shot-caption">Overview: balances, cash movement, branch concentration and client retention.</figcaption></figure>
+        <figure class="card"><img class="shot" src="report-center.png" alt="Ledger report center with CSV and Power BI downloads"><figcaption class="shot-caption">Report Center: filtered CSV exports, Power BI PBIP ZIP and Power Query recipe.</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="section-heading"><h2>Wealth-management roadmap</h2><p>Planned extensions are clearly separated from the current demo.</p></div>
+      <div class="roadmap">
+        <article class="card"><small>Next</small><h3>AUM and portfolio snapshots</h3><p>Move from account balances to investable-asset monitoring.</p></article>
+        <article class="card"><small>Next</small><h3>Allocation and risk bands</h3><p>Model synthetic portfolios, concentration and benchmark context.</p></article>
+        <article class="card"><small>Later</small><h3>Advisor controls</h3><p>Add role-based access, relationship notes, suitability checks and audit trails.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>Ledger / Banking analytics portfolio · fictional data · not affiliated with a bank · <a href="https://github.com/LuqmanCSE/ledger-banking-analytics">GitHub</a></footer>
+</body>
+</html>

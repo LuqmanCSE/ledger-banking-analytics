@@ -7,6 +7,16 @@ Ledger is a deployed, full-stack banking analytics product for a reporting or re
 
 All clients, branches and transactions are fictional. This repository contains no real personal, banking or market data. The public deployment is a read-only demo: it permits validation previews, queries and exports, while persistent writes and simulated transactions are disabled.
 
+## GitHub Student Developer Pack leverage
+
+The repository is prepared to use the highest-value Pack benefits without coupling the product to a new paid service:
+
+- **Codespaces:** `.devcontainer/devcontainer.json` installs Node 24 and Python, runs the build and executes the test suite automatically. A reviewer can open the repository in a reproducible cloud development environment.
+- **GitHub Pages:** `docs/index.html` is a static case-study page with the live demo, architecture, screenshots and roadmap. `.github/workflows/pages.yml` publishes it on every `main` update once Pages is enabled in repository settings.
+- **GitHub Pro:** use the included private-repository allowance and repository settings for protected `main`, required CI checks and a clean release history while iterating.
+
+The Pack also lists cloud credits, monitoring, database and learning offers. They are intentionally not required for the current architecture: adding MongoDB, a second hosting platform or a paid observability stack would increase complexity without improving the evidence this portfolio project presents. See the current [GitHub Student Developer Pack](https://education.github.com/pack) for eligibility and offer limits.
+
 ## Product preview
 
 The screenshots below were captured from the deployed Cloudflare Worker using the seeded baseline (480 fictional clients, 18 branches and 9,993 transactions through 31 July 2025).
