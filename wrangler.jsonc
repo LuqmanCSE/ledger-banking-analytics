@@ -8,7 +8,7 @@
   "d1_databases": [{
     "binding": "DB",
     "database_name": "ledger-portfolio",
-    "database_id": "00000000-0000-0000-0000-000000000000",
+    "database_id": "5c6aaff7-1832-46fe-94d8-3c20970c3ef8",
     "migrations_dir": "drizzle"
   }]
 }
