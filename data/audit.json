@@ -1,0 +1,27 @@
+{
+  "dataset": "ledger-synthetic-v1",
+  "generator_seed": 417,
+  "sha256": "524a7d7b7cd6db128de3a4f98dc4a5595ae2105ddbe3a643ad0999f4c81e9518",
+  "provenance": "Deterministically generated fictional clients and transactions. No third-party records.",
+  "currency": "INR",
+  "start_date": "2024-08-01",
+  "as_of": "2025-07-31",
+  "customers": 480,
+  "transactions": 9993,
+  "balance_minor": 3617060500,
+  "inactive_180": 45,
+  "pending_kyc": 31,
+  "negative_balances": 29,
+  "july_active": 309,
+  "june_active": 309,
+  "july_returning": 232,
+  "july_retention": 75.08,
+  "deposits_minor": 4748871400,
+  "withdrawals_minor": 3397877100,
+  "checks": [
+    "Unique keys",
+    "Valid client references and dates",
+    "Signed amounts",
+    "All clients have recorded activity"
+  ]
+}

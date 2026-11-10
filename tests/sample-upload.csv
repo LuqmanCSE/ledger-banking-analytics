@@ -1,0 +1,5 @@
+transaction_id,customer_id,transaction_date,amount,transaction_type
+DEMO_UPLOAD_001,CUST100000,2025-08-01,2500.25,deposit
+DEMO_UPLOAD_002,CUST100001,2025-08-01,-750.00,withdrawal
+DEMO_REJECT_001,UNKNOWN_CLIENT,2025-08-01,100.00,deposit
+DEMO_REJECT_002,CUST100000,2025-02-30,100.00,deposit

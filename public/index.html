@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101114"><meta name="description" content="A banking analytics portfolio demo with validated transaction ingestion and management reporting."><title>Ledger | Banking analytics</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23101114'/%3E%3Cpath d='M12 11v19h17v-5H17V11z' fill='white'/%3E%3C/svg%3E"><link rel="stylesheet" href="/styles.css?v=4"><script src="/echarts.js" defer></script><script src="/app.js?v=4" defer></script></head>
+<body>
+<svg class="icon-defs" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+<symbol id="i-arrows" viewBox="0 0 24 24"><path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5Z"/><path d="M14 3v5h5M8 12h8M8 16h6"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 16v5h16v-5"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 5"/></symbol>
+<symbol id="i-bank" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5H3Zm1 12h16M6 10v7m6-7v7m6-7v7M3 21h18"/></symbol>
+<symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-10m-6 0h6v6"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+</defs></svg>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="masthead">
+      <a class="brand" href="/" aria-label="Ledger home">Ledger<span class="brand-divider"></span><span class="brand-caption">Banking analytics</span></a>
+      <nav aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview" aria-current="page">Overview</button>
+        <button class="nav-item" data-view="transactions">Transactions</button>
+        <button class="nav-item" data-view="quality">Data & quality</button>
+        <button class="nav-item" data-view="reports">Report center</button>
+      </nav>
+      <span class="environment"><span></span> Portfolio demo</span>
+    </div>
+  </header>
+  <main>
+    <div class="page-heading">
+      <svg class="hero-art" viewBox="0 0 680 360" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="globe-light" cx="30%" cy="25%" r="78%">
+            <stop offset="0%" stop-color="#1b5579"/>
+            <stop offset="60%" stop-color="#102a40"/>
+            <stop offset="100%" stop-color="#090d14"/>
+          </radialGradient>
+          <clipPath id="globe-edge"><circle cx="410" cy="200" r="165"/></clipPath>
+        </defs>
+        <g transform="rotate(-22 410 200)">
+          <circle cx="410" cy="200" r="165" fill="url(#globe-light)" stroke="#4b86ab"/>
+          <g clip-path="url(#globe-edge)" fill="none" stroke="#5b98bd" stroke-opacity=".52">
+            <ellipse cx="410" cy="200" rx="44" ry="165"/>
+            <ellipse cx="410" cy="200" rx="95" ry="165"/>
+            <ellipse cx="410" cy="200" rx="140" ry="165"/>
+            <path d="M245 200h330M257 142q153 53 306 0M257 258q153-53 306 0M289 89q121 62 242 0M289 311q121-62 242 0"/>
+          </g>
+          <ellipse cx="410" cy="200" rx="248" ry="68" fill="none" stroke="#5598c2" stroke-opacity=".55"/>
+          <ellipse cx="410" cy="200" rx="215" ry="98" fill="none" stroke="#5598c2" stroke-opacity=".29" transform="rotate(38 410 200)"/>
+          <path d="M192 166q41 101 297 85t162-65" fill="none" stroke="#83c3ed" stroke-opacity=".6"/>
+          <circle cx="192" cy="166" r="3" fill="#a8dbff"/>
+          <circle cx="489" cy="251" r="4" fill="#a8dbff"/>
+          <circle cx="569" cy="153" r="3" fill="#a8dbff"/>
+        </g>
+        <g fill="#91c6e8" opacity=".55"><circle cx="145" cy="94" r="1.5"/><circle cx="614" cy="58" r="1.5"/><circle cx="623" cy="282" r="1.5"/><circle cx="101" cy="255" r="1.5"/><circle cx="304" cy="37" r="1.5"/></g>
+      </svg>
+      <div class="hero-inner">
+        <div class="hero-copy"><div class="eyebrow">Management reporting <span aria-hidden="true">/</span> <span id="breadcrumb-current">Overview</span></div><h1 id="page-title">Banking overview</h1><p id="page-subtitle">Explore client balances, cash movement, and engagement across your reporting ledger.</p></div>
+        <div class="heading-actions"><button id="live-toggle" class="button secondary" aria-pressed="false"><span class="live-dot"></span><span id="live-label">Start live demo</span></button><button id="export-open" class="button primary"><svg><use href="#i-download"/></svg>Export report</button></div>
+      </div>
+    </div>
+    <div class="context-strip"><div><svg><use href="#i-info"/></svg><span>Synthetic banking dataset · fictional clients and transactions.</span></div><span id="freshness">Connecting…</span></div>
+    <div id="error-banner" class="error-banner" role="alert" hidden></div>
+    <section class="filter-bar" aria-label="Reporting filters"><div class="filter-title">Filter by</div><label>Branch<select id="filter-branch"><option value="">All branches</option></select></label><label>Channel<select id="filter-channel"><option value="">All channels</option><option value="online">Online</option><option value="branch">Branch</option></select></label><label>Account type<select id="filter-account"><option value="">All accounts</option><option value="savings">Savings</option><option value="current">Current</option></select></label><label class="month-filter">Activity month<select id="filter-month"><option value="">Latest available</option></select></label><button class="text-button" id="reset-filters">Reset</button></section>
+
+    <section id="view-overview" class="view">
+      <div id="period-warning" class="period-warning" role="note" hidden></div>
+      <div class="section-label"><span>Reporting at a glance <span class="tag neutral" id="snapshot-date">—</span></span><span>Balances reflect the latest client snapshot across all activity months.</span></div>
+      <div class="kpi-grid">
+        <article class="kpi-card"><div class="kpi-top"><span>Total client balance</span><span class="kpi-icon"><svg><use href="#i-bank"/></svg></span></div><div class="kpi-value" id="kpi-balance">—</div><div class="kpi-bottom"><span class="tiny-dot green"></span>Current & savings accounts</div></article>
+        <article class="kpi-card"><div class="kpi-top"><span>Total clients</span><span class="kpi-icon"><svg><use href="#i-users"/></svg></span></div><div class="kpi-value" id="kpi-clients">—</div><div class="kpi-bottom"><span id="kpi-inactive" class="tag amber">— inactive</span><span>180+ days</span></div></article>
+        <article class="kpi-card"><div class="kpi-top"><span>Monthly net cash flow</span><span class="kpi-icon"><svg><use href="#i-arrows"/></svg></span></div><div class="kpi-value" id="kpi-net">—</div><div class="kpi-bottom"><span id="flow-state" class="tag green">—</span><span class="period-label">Selected month</span></div></article>
+        <article class="kpi-card"><div class="kpi-top"><span>Activity retention</span><span class="kpi-icon"><svg><use href="#i-trend"/></svg></span></div><div class="kpi-value" id="kpi-retention">—</div><div class="kpi-bottom"><span id="retention-detail">Returning / prior-month active clients</span></div></article>
+      </div>
+      <div class="charts-grid"><article class="panel cash-panel"><div class="panel-heading"><div><h2>Cash movement</h2><p>Monthly deposits and withdrawals</p></div><span class="tag neutral">INR</span></div><div class="chart-legend"><span><i class="legend-dot deposits"></i>Deposits</span><span><i class="legend-dot withdrawals"></i>Withdrawals</span><span class="chart-caption" id="chart-period">Last 12 months</span></div><div id="flow-chart" class="chart large" role="img" aria-label="Monthly deposits and withdrawals line chart"></div><div class="chart-footer"><svg><use href="#i-clock"/></svg><span id="flow-caption">Source activity dates shown; amounts are not revenue.</span></div></article>
+      <article class="panel branch-panel"><div class="panel-heading"><div><h2>Balance by branch</h2><p>Top 5 branches by client balance</p></div><svg class="muted-icon"><use href="#i-bank"/></svg></div><div id="branch-chart" class="chart large" role="img" aria-label="Top five branches by balance bar chart"></div><div class="chart-footer"><span class="tiny-dot green"></span><span id="concentration">Loading concentration…</span></div></article></div>
+      <div class="bottom-grid"><article class="panel"><div class="panel-heading"><div><h2>Client engagement</h2><p>Transaction activity across recent months</p></div><button class="text-button" id="engagement-export">Download data <span>↗</span></button></div><div class="table-wrap"><table><thead><tr><th>MONTH</th><th>ACTIVE CLIENTS</th><th>RETURNING</th><th>RETENTION</th></tr></thead><tbody id="engagement-body"></tbody></table></div><div class="table-note">Retention = clients active in both months ÷ prior-month active clients.</div></article>
+      <article class="panel channel-panel"><div class="panel-heading"><div><h2>Client channels</h2><p>Customer distribution by acquisition channel</p></div></div><div class="channel-layout"><div id="channel-chart" class="chart donut" role="img" aria-label="Clients by online and branch channel"></div><div id="channel-legend" class="channel-legend"></div></div></article></div>
+    </section>
+
+    <section id="view-transactions" class="view" hidden><article class="panel"><div class="panel-heading"><div><h2>Transaction ledger</h2><p id="transaction-total">Validated records with traceable sources</p></div><div class="inline-controls"><label class="sr-only" for="transaction-source">Transaction source</label><select id="transaction-source"><option value="">All sources</option><option value="baseline">Historical baseline</option><option value="upload">CSV / API upload</option><option value="simulated">Simulated</option></select><label class="sr-only" for="transaction-type">Transaction type</label><select id="transaction-type"><option value="">All types</option><option value="deposit">Deposits</option><option value="withdrawal">Withdrawals</option></select><button class="button secondary small" id="transactions-download"><svg><use href="#i-download"/></svg>CSV</button></div></div><div class="table-wrap"><table class="transaction-table"><thead><tr><th>TRANSACTION ID</th><th>CLIENT</th><th>BRANCH</th><th>DATE</th><th>TYPE</th><th>AMOUNT (INR)</th><th>SOURCE</th></tr></thead><tbody id="transaction-body"></tbody></table></div><div class="pagination"><span id="page-info">—</span><div><button class="button secondary small" id="prev-page">← Previous</button><button class="button secondary small" id="next-page">Next →</button></div></div></article></section>
+
+    <section id="view-quality" class="view" hidden><div class="quality-grid"><article class="panel upload-panel"><div class="panel-heading"><div><h2>Bring in new transactions</h2><p id="upload-description">Validate and import a CSV into the reporting ledger.</p></div><svg class="muted-icon"><use href="#i-upload"/></svg></div><div class="upload-body"><label class="dropzone" id="dropzone" for="csv-file"><svg><use href="#i-upload"/></svg><strong>Choose a CSV or drop it here</strong><span>Up to 500 transactions · 1 MB maximum</span><input id="csv-file" type="file" accept=".csv,text/csv"></label><div class="upload-helper"><span id="file-name">No file selected</span><button class="text-button" id="sample-upload">Use sample batch</button><a href="/api/template" download>Download template ↗</a></div><div class="requirements"><strong>What we check</strong><p>Known client IDs, valid dates, signed amounts, and unique transaction IDs. Repeated identical records are skipped; conflicting IDs are rejected.</p></div><button id="upload-submit" class="button primary" disabled><svg><use href="#i-check"/></svg>Validate & import</button><div id="upload-result" aria-live="polite"></div></div></article><article class="panel"><div class="panel-heading"><div><h2>Reporting health</h2><p>Live integrity checks across the entire ledger</p></div><span id="health-badge" class="tag green">Checking</span></div><div id="health-checks" class="health-list"></div><div class="health-bottom"><strong>Review items, not automatic errors</strong><p id="review-items">—</p><p>Negative balances may represent overdrafts. A pending KYC label is not a regulatory determination.</p></div></article></div>
+      <article class="panel"><div class="panel-heading"><div><h2>Ingestion history</h2><p>Persisted outcomes from CSV, API, and simulated feed runs</p></div><span class="tag neutral">Latest 8 runs</span></div><div class="table-wrap"><table><thead><tr><th>RECEIVED AT</th><th>SOURCE</th><th>ACCEPTED</th><th>REJECTED</th><th>DUPLICATES</th></tr></thead><tbody id="run-body"></tbody></table></div></article>
+      <div class="method-note"><svg><use href="#i-info"/></svg><p>The baseline comes from Ledger’s deterministic synthetic data generator. <a href="/api/audit" target="_blank" rel="noopener">View dataset audit ↗</a> Imported and simulated records have separate source labels.</p></div>
+    </section>
+
+    <section id="view-reports" class="view" hidden><div class="report-intro"><span class="report-icon"><svg><use href="#i-file"/></svg></span><div><h2>From insight to your next decision.</h2><p>Download reporting data for further analysis. Every export uses the same validated ledger.</p></div></div><div class="report-grid">
+      <article class="panel report-card"><div class="report-type">CSV <span class="tag green">Ready</span></div><h2>Transaction data</h2><p>Individual transactions with customer, branch, type, and source. Uses the current segment and activity month.</p><div class="report-meta">Signed amounts · ISO dates · INR</div><button class="button primary" data-download="transactions"><svg><use href="#i-download"/></svg>Download transactions</button><button class="text-button" id="full-history-download">Download full history ↗</button></article>
+      <article class="panel report-card"><div class="report-type">CSV <span class="tag green">Ready</span></div><h2>Client snapshot</h2><p>Client attributes, current balances, and last activity. Uses segment filters; independent of the activity month.</p><div class="report-meta">One row per client · current snapshot</div><button class="button secondary" data-download="customers"><svg><use href="#i-download"/></svg>Download clients</button></article>
+      <article class="panel report-card"><div class="report-type">CSV <span class="tag green">Ready</span></div><h2>Monthly reporting</h2><p>Deposits, withdrawals, net flow, active clients, and retention across all months for the selected segment.</p><div class="report-meta">All periods · agreed metric definitions</div><button class="button secondary" data-download="monthly"><svg><use href="#i-download"/></svg>Download monthly metrics</button></article>
+    </div><article class="panel powerbi-panel"><div class="powerbi-mark"><span></span><span></span><span></span></div><div class="powerbi-copy"><div class="eyebrow">CONTINUE IN POWER BI</div><h2>Your data, ready for deeper exploration.</h2><p>Import the CSV exports into free Power BI Desktop, or use the Power Query script to connect to the local reporting API.</p><div class="powerbi-actions"><a class="button primary" id="powerbi-download" href="/api/powerbi/download" download hidden><svg><use href="#i-download"/></svg><span id="powerbi-download-label">Download report</span></a><a class="button secondary" href="/api/powerquery" download><svg><use href="#i-download"/></svg>Download Power Query script</a><button class="text-button" id="powerbi-guide">Connection guide ↗</button></div></div><div class="report-status"><span class="tag neutral" id="powerbi-status">Checking report availability</span><p id="powerbi-detail"></p></div></article>
+      <article class="panel definitions-panel"><div class="panel-heading"><div><h2>Metric definitions</h2><p>Consistent language for every report</p></div></div><div class="definition-grid"><div><strong>Client balance</strong><p>Initial deposit plus all recorded signed transactions. Includes negative balances.</p></div><div><strong>Monthly active clients</strong><p>Distinct customers with at least one transaction in the selected calendar month.</p></div><div><strong>Activity retention</strong><p>Clients active in both months divided by prior-month active clients. Blank without a valid prior denominator.</p></div><div><strong>Inactive clients</strong><p>180+ days since last transaction, measured at the latest recorded activity date. Not confirmed churn.</p></div></div></article>
+    </section>
+    <footer><span>LEDGER <span class="footer-separator">/</span> Banking analytics portfolio</span><span><a href="/api/audit">Synthetic data provenance</a> · INR · Not affiliated with a bank</span></footer>
+  </main>
+</div>
+<dialog id="export-dialog"><div class="dialog-heading"><h2>Export reporting data</h2><button class="icon-button" data-close="export-dialog" aria-label="Close export dialog">×</button></div><p>Exports reflect your selected client segment. Transaction exports also use the selected activity month.</p><button class="export-choice" data-download="transactions"><svg><use href="#i-arrows"/></svg><span><strong>Transactions</strong><small>Current filters · CSV</small></span><span>↓</span></button><button class="export-choice" data-download="customers"><svg><use href="#i-users"/></svg><span><strong>Client snapshot</strong><small>Segment filters · CSV</small></span><span>↓</span></button><button class="export-choice" data-download="monthly"><svg><use href="#i-trend"/></svg><span><strong>Monthly metrics</strong><small>All periods for selected segment · CSV</small></span><span>↓</span></button><p class="dialog-footnote">Power BI connection files are available in Report center.</p></dialog>
+<dialog id="guide-dialog">
+  <div class="dialog-heading"><h2>Use Ledger in Power BI Desktop</h2><button class="icon-button" data-close="guide-dialog" aria-label="Close guide">×</button></div>
+  <ol class="guide-list">
+    <li><strong>Open the baseline report.</strong><p>For a project ZIP, extract it and open Ledger.pbip in Power BI Desktop. Keep the report and semantic model folders alongside it. For a .pbix download, open the file directly.</p></li>
+    <li><strong>Refresh and save an editable file.</strong><p>In the project, choose Home → Refresh to load the synthetic snapshot. Check the client count, then use File → Save as and select Power BI Desktop file (.pbix).</p></li>
+    <li><strong>Connect the transaction data separately.</strong><p>Choose Get data → Blank query → Advanced Editor and paste the downloaded Power Query script. Set BaseUrl to the local Ledger server or your public deployment.</p></li>
+  </ol>
+</dialog>
+<div id="loading-overlay" class="loading-overlay"><div class="loading-card"><div class="brand loading-brand"><span class="brand-mark">L<span></span></span><span>ledger.</span></div><h2>Preparing your workspace</h2><p id="loading-message">Connecting to the reporting ledger…</p><div class="progress-track"><span id="loading-progress"></span></div><button class="button secondary" id="retry-load" hidden>Try again</button></div></div>
+<div id="toast" role="status" hidden></div>
+</body></html>

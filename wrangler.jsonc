@@ -1,0 +1,14 @@
+{
+  "name": "ledger-banking-analytics",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-11-10",
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": {"PUBLIC_DEMO": "1"},
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "ledger-portfolio",
+    "database_id": "00000000-0000-0000-0000-000000000000",
+    "migrations_dir": "drizzle"
+  }]
+}

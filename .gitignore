@@ -1,0 +1,7 @@
+dist/
+site.tar.gz
+node_modules/
+.local/
+outputs/
+__pycache__/
+.wrangler/
